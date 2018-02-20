@@ -7,3 +7,5 @@ mlton_*.debian.tar.xz
 mlton_*.dsc
 mlton_*_source.build
 mlton_*_source.changes
+
+mlton_*_source.ppa.upload
