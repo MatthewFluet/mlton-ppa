@@ -1,6 +1,14 @@
+mlton (20180207-0ppa8) UBUNTUSERIESNAME; urgency=medium
+
+  * Bump version for Launchpad PPA rebuild
+   * Drop `DEB_DH_STRIP_ARGS_DEFAULT = --no-automatic-dbgsym` on 14.04 Trusty
+
+ -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 15:38:45 -0500
+
 mlton (20180207-0ppa7) UBUNTUSERIESNAME; urgency=low
 
   * Bump version for Launchpad PPA rebuild
+   * Drop `stack-hardening.patch` on 14.04 Trusty
 
  -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 14:32:00 -0500
 
