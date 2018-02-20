@@ -1,3 +1,10 @@
+mlton (20180207-0ppa5) UNRELEASED; urgency=medium
+
+  * Fix Homepage field in control (homepage-in-binary-package lintian)
+  * Restore uniquifying short descriptions (duplicate-short-description lintian)
+
+ -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 06:31:09 -0500
+
 mlton (20180207-0ppa4) xenial; urgency=low
 
   * Revert update Build-Depends for mlton-compiler and mlton-tools
