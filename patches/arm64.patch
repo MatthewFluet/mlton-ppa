@@ -1,0 +1,42 @@
+--- a/lib/stubs/mlton-stubs/mlton.sml
++++ b/lib/stubs/mlton-stubs/mlton.sml
+@@ -158,12 +158,13 @@
+ 
+             structure Arch =
+                struct
+-                  datatype t = Alpha | AMD64 | ARM | HPPA | IA64 | m68k |
++                  datatype t = Alpha | AMD64 | ARM | ARM64 | HPPA | IA64 | m68k |
+                                MIPS | PowerPC | PowerPC64 | S390 | Sparc | X86
+ 
+                   val all = [(Alpha, "Alpha"),
+                              (AMD64, "AMD64"),
+                              (ARM, "ARM"),
++                             (ARM64, "ARM64"),
+                              (HPPA, "HPPA"),
+                              (IA64, "IA64"),
+                              (m68k, "m68k"),
+--- a/lib/stubs/mlton-stubs/platform.sig
++++ b/lib/stubs/mlton-stubs/platform.sig
+@@ -9,7 +9,7 @@
+    sig
+       structure Arch:
+          sig
+-            datatype t = Alpha | AMD64 | ARM | HPPA | IA64 | m68k |
++            datatype t = Alpha | AMD64 | ARM | ARM64 | HPPA | IA64 | m68k |
+                          MIPS | PowerPC | PowerPC64 | S390 | Sparc | X86
+ 
+             val fromString: string -> t option
+--- a/mlton/main/main.fun
++++ b/mlton/main/main.fun
+@@ -187,6 +187,7 @@
+          Alpha => true
+        | AMD64 => true
+        | ARM => true
++       | ARM64 => true
+        | HPPA => true
+        | IA64 => true
+        | MIPS => true
+--- /dev/null
++++ b/runtime/platform/arm64.h
+@@ -0,0 +1 @@
++#define MLton_Platform_Arch_host "arm64"

@@ -1,0 +1,492 @@
+Source: mlton
+Section: devel
+Priority: optional
+Maintainer: Wesley W. Terpstra <terpstra@debian.org>
+Build-Depends: binutils (>= 2.21.51.201104) [mips mipsel], gcc (>= 4:4.6.0-5) [mips mipsel], libgmp-dev, mlton-compiler, mlton-tools, debhelper (>= 9.0.0), cdbs (>= 0.4.52), quilt, procps, texlive-latex-base, asciidoc, dblatex, python-pygments, imagemagick, librsvg2-bin
+Standards-Version: 3.9.8
+
+Package: mlton
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-compiler (>= ${source:Version}), mlton-compiler (<< ${source:Version}.1~), mlton-tools (>= ${source:Version}), mlton-tools (<< ${source:Version}.1~), mlton-doc (= ${source:Version})
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This metapackage depends on all MLton packages.
+
+Package: mlton-basis
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Breaks: mlton (<< ${source:Version})
+Replaces: mlton (<< ${source:Version})
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package includes the cross-platform basis.
+
+Package: mlton-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Breaks: mlton (<< ${source:Version})
+Replaces: mlton (<< ${source:Version})
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package includes non-man-page documentation.
+
+Package: mlton-compiler
+Architecture: alpha amd64 arm64 armel armhf hppa i386 kfreebsd-i386 kfreebsd-amd64 mips64el mips mipsel powerpc ppc64el s390x sparc
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, gcc, libc6-dev, libgmp-dev, mlton-basis (= ${source:Version}), mlton-runtime-native (= ${binary:Version}) | mlton-runtime
+Breaks: mlton (<< ${source:Version})
+Replaces: mlton (<< ${source:Version})
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package includes the compiler itself.
+
+Package: mlton-tools
+Architecture: alpha amd64 arm64 armel armhf hppa i386 kfreebsd-i386 kfreebsd-amd64 mips64el mips mipsel powerpc ppc64el s390x sparc
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: mlton (<< ${source:Version})
+Replaces: mlton (<< ${source:Version})
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package includes tools which autogenerate SML.
+
+Package: mlton-runtime-native
+Architecture: alpha amd64 arm64 armel armhf hppa i386 kfreebsd-i386 kfreebsd-amd64 mips64el mips mipsel powerpc ppc64el s390x sparc
+Depends: ${misc:Depends}, mlton-runtime-alpha-linux-gnu (= ${binary:Version}) [alpha] | mlton-runtime-x86-64-linux-gnu (= ${binary:Version}) [amd64] | mlton-runtime-aarch64-linux-gnu (= ${binary:Version}) [arm64] | mlton-runtime-arm-linux-gnueabi (= ${binary:Version}) [armel] | mlton-runtime-arm-linux-gnueabihf (= ${binary:Version}) [armhf] | mlton-runtime-hppa-linux-gnu (= ${binary:Version}) [hppa] | mlton-runtime-i486-linux-gnu (= ${binary:Version}) [i386] | mlton-runtime-i486-kfreebsd-gnu (= ${binary:Version}) [kfreebsd-i386] | mlton-runtime-x86-64-kfreebsd-gnu (= ${binary:Version}) [kfreebsd-amd64] | mlton-runtime-mips64el-linux-gnuabi64 (= ${binary:Version}) [mips64el] | mlton-runtime-mips-linux-gnu (= ${binary:Version}) [mips] | mlton-runtime-mipsel-linux-gnu (= ${binary:Version}) [mipsel] | mlton-runtime-powerpc-linux-gnu (= ${binary:Version}) [powerpc] | mlton-runtime-powerpc64le-linux-gnu (= ${binary:Version}) [ppc64el] | mlton-runtime-s390x-linux-gnu (= ${binary:Version}) [s390x] | mlton-runtime-sparc-linux-gnu (= ${binary:Version}) [sparc]
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This metapackage depends on native target libraries.
+
+Package: mlton-runtime-alpha-linux-gnu
+Architecture: alpha
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides alpha target libraries.
+
+Package: mlton-runtime-x86-64-linux-gnu
+Architecture: amd64
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides x86-64 target libraries.
+
+Package: mlton-runtime-aarch64-linux-gnu
+Architecture: arm64
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides arm64 target libraries.
+
+Package: mlton-runtime-arm-linux-gnueabi
+Architecture: armel
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides arm target libraries.
+
+Package: mlton-runtime-arm-linux-gnueabihf
+Architecture: armhf
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides armhf target libraries.
+
+Package: mlton-runtime-hppa-linux-gnu
+Architecture: hppa
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides hppa target libraries.
+
+Package: mlton-runtime-i486-linux-gnu
+Architecture: i386
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides i486 target libraries.
+
+Package: mlton-runtime-i486-kfreebsd-gnu
+Architecture: kfreebsd-i386
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides kfreebsd i386 target libraries.
+
+Package: mlton-runtime-x86-64-kfreebsd-gnu
+Architecture: kfreebsd-amd64
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides kfreebsd amd64 target libraries.
+
+Package: mlton-runtime-mips64el-linux-gnuabi64
+Architecture: mips64el
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides mips64el target libraries.
+
+Package: mlton-runtime-mips-linux-gnu
+Architecture: mips
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides mips target libraries.
+
+Package: mlton-runtime-mipsel-linux-gnu
+Architecture: mipsel
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides mipsel target libraries.
+
+Package: mlton-runtime-powerpc-linux-gnu
+Architecture: powerpc
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides powerpc target libraries.
+
+Package: mlton-runtime-powerpc64le-linux-gnu
+Architecture: ppc64el
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides ppc64el target libraries.
+
+Package: mlton-runtime-s390x-linux-gnu
+Architecture: s390x
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides s390x target libraries.
+
+Package: mlton-runtime-sparc-linux-gnu
+Architecture: sparc
+Multi-Arch: foreign
+Depends: ${misc:Depends}, mlton-basis (= ${source:Version})
+Provides: mlton-runtime
+Homepage: http://mlton.org/
+Description: Whole-program optimizing compiler for Standard ML
+ MLton is a whole-program optimizing compiler for Standard ML.  MLton
+ generates small executables with excellent runtime performance,
+ utilizing untagged and unboxed native integers, reals, and words,
+ unboxed native arrays, fast arbitrary-precision arithmetic based on
+ GnuMP, and multiple code generation and garbage collection strategies.
+ In addition, MLton provides a feature rich Standard ML programming
+ environment, with full support for SML97 as given in The Definition
+ of Standard ML (Revised), a number of useful language extensions, a
+ complete implementation of the Standard ML Basis Library, various
+ useful libraries, a simple and fast C foreign function interface, the
+ ML Basis system for programming with source libraries, and tools such
+ as a lexer generator, a parser generator, and a profiler.
+ .
+ This package provides sparc target libraries.

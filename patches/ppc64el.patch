@@ -1,0 +1,11 @@
+--- a/bin/platform
++++ b/bin/platform
+@@ -115,7 +115,7 @@
+ powerpc64)
+ 	HOST_ARCH=powerpc64
+ ;;
+-ppc64)
++ppc64*)
+         HOST_ARCH=powerpc64
+ ;;
+ powerpc)

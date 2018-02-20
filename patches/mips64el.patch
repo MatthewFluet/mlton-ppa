@@ -1,0 +1,117 @@
+--- a/basis-library/mlton/platform.sig
++++ b/basis-library/mlton/platform.sig
+@@ -10,7 +10,7 @@
+       structure Arch:
+          sig
+             datatype t = Alpha | AMD64 | ARM | ARM64 | HPPA | IA64 | m68k |
+-                         MIPS | PowerPC | PowerPC64 | S390 | Sparc | X86
++                         MIPS | MIPS64 | PowerPC | PowerPC64 | S390 | Sparc | X86
+ 
+             val fromString: string -> t option
+             val host: t
+--- a/basis-library/mlton/platform.sml
++++ b/basis-library/mlton/platform.sml
+@@ -25,6 +25,7 @@
+                 (IA64, "IA64"),
+                 (m68k, "m68k"),
+                 (MIPS, "MIPS"),
++                (MIPS64, "MIPS64"),
+                 (PowerPC, "PowerPC"),
+                 (PowerPC64, "PowerPC64"),
+                 (S390, "S390"),
+--- a/basis-library/primitive/prim-mlton.sml
++++ b/basis-library/primitive/prim-mlton.sml
+@@ -154,6 +154,7 @@
+              | IA64
+              | m68k
+              | MIPS
++             | MIPS64
+              | PowerPC
+              | PowerPC64
+              | S390
+@@ -170,6 +171,7 @@
+                 | "ia64" => IA64
+                 | "m68k" => m68k
+                 | "mips" => MIPS
++                | "mips64" => MIPS64
+                 | "powerpc" => PowerPC
+                 | "powerpc64" => PowerPC64
+                 | "s390" => S390
+--- a/bin/platform
++++ b/bin/platform
+@@ -108,6 +108,9 @@
+ m68k*)
+         HOST_ARCH=m68k
+ ;;
++mips64*)
++	HOST_ARCH=mips64
++;;
+ mips*)
+ # big-endian and little-endian detect via headers
+         HOST_ARCH=mips
+--- a/lib/stubs/mlton-stubs/mlton.sml
++++ b/lib/stubs/mlton-stubs/mlton.sml
+@@ -159,7 +159,7 @@
+             structure Arch =
+                struct
+                   datatype t = Alpha | AMD64 | ARM | ARM64 | HPPA | IA64 | m68k |
+-                               MIPS | PowerPC | PowerPC64 | S390 | Sparc | X86
++                               MIPS | MIPS64 | PowerPC | PowerPC64 | S390 | Sparc | X86
+ 
+                   val all = [(Alpha, "Alpha"),
+                              (AMD64, "AMD64"),
+@@ -169,6 +169,7 @@
+                              (IA64, "IA64"),
+                              (m68k, "m68k"),
+                              (MIPS, "MIPS"),
++                             (MIPS64, "MIPS64"),
+                              (PowerPC, "PowerPC"),
+                              (PowerPC64, "PowerPC64"),
+                              (S390, "S390"),
+--- a/lib/stubs/mlton-stubs/platform.sig
++++ b/lib/stubs/mlton-stubs/platform.sig
+@@ -10,7 +10,7 @@
+       structure Arch:
+          sig
+             datatype t = Alpha | AMD64 | ARM | ARM64 | HPPA | IA64 | m68k |
+-                         MIPS | PowerPC | PowerPC64 | S390 | Sparc | X86
++                         MIPS | MIPS64 | PowerPC | PowerPC64 | S390 | Sparc | X86
+ 
+             val fromString: string -> t option
+             val host: t
+--- a/mlton/main/main.fun
++++ b/mlton/main/main.fun
+@@ -192,6 +192,7 @@
+        | HPPA => true
+        | IA64 => true
+        | MIPS => true
++       | MIPS64 => true
+        | Sparc => true
+        | S390 => true
+        | _ => false
+--- a/runtime/cenv.h
++++ b/runtime/cenv.h
+@@ -101,6 +101,8 @@
+ #include "platform/ia64.h"
+ #elif (defined (__m68k__))
+ #include "platform/m68k.h"
++#elif (defined (__mips64))
++#include "platform/mips64.h"
+ #elif (defined (__mips__))
+ #include "platform/mips.h"
+ #elif (defined (__powerpc64__))
+--- /dev/null
++++ b/runtime/platform/mips64.h
+@@ -0,0 +1 @@
++#define MLton_Platform_Arch_host "mips64"
+--- a/runtime/platform/linux.c
++++ b/runtime/platform/linux.c
+@@ -37,7 +37,7 @@
+ #else
+         GC_handleSigProf ((code_pointer) scp->si_regs.pc);
+ #endif
+-#elif (defined (__mips__))
++#elif (defined (__mips64)) || (defined (__mips__))
+         ucontext_t* ucp = (ucontext_t*)context;
+ #ifdef __UCLIBC__
+         GC_handleSigProf ((code_pointer) ucp->uc_mcontext.gpregs[CTX_EPC]);

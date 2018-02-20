@@ -1,0 +1,12 @@
+Index: mlton-20130715/runtime/cenv.h
+===================================================================
+--- mlton-20130715.orig/runtime/cenv.h
++++ mlton-20130715/runtime/cenv.h
+@@ -13,6 +13,7 @@
+ /* GNU C Library Feature Macros */
+ #define _ISOC99_SOURCE
+ #define _BSD_SOURCE
++#define _DEFAULT_SOURCE 1
+ // #define _XOPEN_SOURCE 600
+ /* Only enable _POSIX_C_SOURCE on platforms that don't have broken
+  * system headers.

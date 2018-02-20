@@ -1,0 +1,10 @@
+--- a/mlton/main/main.fun
++++ b/mlton/main/main.fun
+@@ -977,6 +977,7 @@
+             (* On ELF systems, we only need PIC for LibArchive/Library *)
+           | (_, _, Library) => true
+           | (_, _, LibArchive) => true
++          | (Linux, _, _) => true
+           | _ => false
+       val () = Control.positionIndependent := positionIndependent
+ 

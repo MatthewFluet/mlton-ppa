@@ -1,0 +1,33 @@
+--- a/bin/mlton-script
++++ b/bin/mlton-script
+@@ -90,6 +90,7 @@
+         -target-cc-opt aix '-maix64'                             \
+         -target-cc-opt ia64-hpux "-mlp64"                        \
+         -target-cc-opt ia64 "-mtune=itanium2"                    \
++        -target-cc-opt linux '-fstack-protector-strong'          \
+         -target-cc-opt sparc '-m32 -mcpu=v8 -Wa,-xarch=v8plusa'  \
+         -target-cc-opt x86                                       \
+                 '-m32
+@@ -104,7 +105,7 @@
+                 '-mieee -mbwx -mtune=ev6 -mfp-rounding-mode=d'   \
+         -target-link-opt aix '-maix64'                           \
+         -target-link-opt ia64-hpux "-mlp64"                      \
+-        -target-link-opt linux '-Wl,-znoexecstack'               \
++        -target-link-opt linux '-Wl,-znoexecstack,-zrelro'       \
+         -target-link-opt mingw                                   \
+                 '-lws2_32 -lkernel32 -lpsapi -lnetapi32 -lwinmm' \
+         -target-link-opt mingw '-Wl,--enable-stdcall-fixup'      \
+--- a/runtime/Makefile
++++ b/runtime/Makefile
+@@ -106,6 +106,11 @@
+ DEBUGXCFLAGS := -DASSERT=1 -Wno-uninitialized -O0 -g
+ PICXCFLAGS :=
+ 
++# Use stack hardening for the C method calls on linux
++ifeq ($(TARGET_OS), linux)
++XCFLAGS += -fstack-protector-strong
++endif
++
+ # Win32&64 don't use PIC code, all other platforms do
+ ifeq ($(findstring $(TARGET_OS), mingw cygwin),)
+ PICXCFLAGS += -fPIC

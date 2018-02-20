@@ -1,0 +1,5 @@
+linux-pic.patch
+stack-hardening.patch
+ppc64el.patch
+kfreebsd.patch
+mips64el.patch
