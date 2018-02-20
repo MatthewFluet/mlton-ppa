@@ -2,7 +2,7 @@ Source: mlton
 Section: devel
 Priority: optional
 Maintainer: Wesley W. Terpstra <terpstra@debian.org>
-Build-Depends: binutils (>= 2.21.51.201104) [mips mipsel], gcc (>= 4:4.6.0-5) [mips mipsel], libgmp-dev, mlton-compiler, mlton-tools, debhelper (>= 9.0.0), cdbs (>= 0.4.52), quilt, procps, texlive-latex-base, asciidoc, dblatex, python-pygments, imagemagick, librsvg2-bin
+Build-Depends: binutils (>= 2.21.51.201104) [mips mipsel], gcc (>= 4:4.6.0-5) [mips mipsel], libgmp-dev, mlton-compiler (<= 20130715-3), mlton-tools (<= 20130715-3), debhelper (>= 9.0.0), cdbs (>= 0.4.52), quilt, procps, texlive-latex-base, asciidoc, dblatex, python-pygments, imagemagick, librsvg2-bin
 Standards-Version: 3.9.8
 
 Package: mlton
