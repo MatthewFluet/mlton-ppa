@@ -1,7 +1,13 @@
-mlton (20180207-0ppa5) UNRELEASED; urgency=medium
+mlton (20180207-0ppa5) xenial; urgency=low
 
   * Fix Homepage field in control (homepage-in-binary-package lintian)
   * Restore uniquifying short descriptions (duplicate-short-description lintian)
+  * Add patch to not clean source documentation
+  * Remove texlive-latex-base, asciidoc, dblatex, python-pygments,
+    imagemagick, librsvg2-bin from Build-Depends to use documentation
+    provided by upstream sources; in particular, network access isn't
+    available with PPA build, which causes InclGitFile.py to fail
+    when building guide
 
  -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 06:31:09 -0500
 

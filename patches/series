@@ -4,3 +4,4 @@ ppc64el.patch
 kfreebsd.patch
 mips64el.patch
 pr-252-x86-updates.patch
+no-clean-docs.patch

@@ -1,0 +1,55 @@
+--- a/doc/guide/.gitignore
++++ b/doc/guide/.gitignore
+@@ -1,3 +1 @@
+-/localhost/
+-/mlton-guide.pdf
+ /www.mlton.org/
+--- a/mllex/.gitignore
++++ b/mllex/.gitignore
+@@ -1,12 +1,10 @@
+ /lexgen.aux
+ /lexgen.dvi
+ /lexgen.log
+-/lexgen.pdf
+ /lexgen.ps
+ /lexgen.toc
+ /ml.lex
+ /ml.lex.sml
+ /mllex
+ /mllex.exe
+-/mllex.pdf
+ /mllex.ps
+--- a/mlyacc/.gitignore
++++ b/mlyacc/.gitignore
+@@ -4,5 +4,4 @@
+ /ml.grm.sml
+ /mlyacc
+ /mlyacc.exe
+-/mlyacc.pdf
+ /mlyacc.ps
+--- a/mlyacc/doc/.gitignore
++++ b/mlyacc/doc/.gitignore
+@@ -1,6 +1,5 @@
+ /mlyacc.aux
+ /mlyacc.dvi
+ /mlyacc.log
+-/mlyacc.pdf
+ /mlyacc.ps
+ /mlyacc.toc
+--- a/doc/guide/conf/.gitignore
++++ b/doc/guide/conf/.gitignore
+@@ -1,3 +0,0 @@
+-/html5-footer.conf
+-/html5-header.conf
+-/specialsections.conf
+--- a/doc/guide/src/.gitignore
++++ b/doc/guide/src/.gitignore
+@@ -1,3 +0,0 @@
+-/Index.adoc
+-/mlton-guide.adoc
+-/mlton-guide.xml
+--- a/doc/guide/src/Logo.attachments/.gitignore
++++ b/doc/guide/src/Logo.attachments/.gitignore
+@@ -1,2 +1 @@
+-/mlton-*.pdf
+ /mlton-*.png
