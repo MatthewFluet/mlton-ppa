@@ -1,3 +1,9 @@
+mlton (20180207-0ppa6) UBUNTU_SERIES_NAME; urgency=low
+
+  * Bump version to target different Ubuntu series
+
+ -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 13:23:03 -0500
+
 mlton (20180207-0ppa5) xenial; urgency=low
 
   * Fix Homepage field in control (homepage-in-binary-package lintian)
