@@ -1,10 +1,16 @@
+mlton (20180207-0ppa4) xenial; urgency=low
+
+  * Revert update Build-Depends for mlton-compiler and mlton-tools
+
+ -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 06:03:10 -0500
+
 mlton (20180207-0ppa3) xenial; urgency=low
 
   * Update Build-Depends for mlton-compiler and mlton-tools to
     (<= 20130715-3), because PPA build is performed with PPA itself
     as a source; if a previous PPA build succeeded on some archs but
     failed on others, then it is impossible to rebuild the failed
-    architectures using the PPA as a source.
+    architectures using the PPA as a source
 
  -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 05:37:54 -0500
 
