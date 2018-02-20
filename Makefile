@@ -11,3 +11,7 @@ init:
 	tar xzf mlton_$(MLTON_VERSION).orig.tar.gz
 	mv mlton-$(MLTON_VERSION)/* mlton/
 	rmdir mlton-$(MLTON_VERSION)
+
+.PHONY: clean
+clean:
+	git clean -x -d -f
