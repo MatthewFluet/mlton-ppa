@@ -1,3 +1,9 @@
-mlton_*.orig.tar.gz
 /mlton/*
 !/mlton/debian
+
+mlton_*.orig.tar.gz
+
+mlton_*.debian.tar.xz
+mlton_*.dsc
+mlton_*_source.build
+mlton_*_source.changes

@@ -15,3 +15,8 @@ init:
 .PHONY: clean
 clean:
 	git clean -x -d -f
+
+DEBUILD_OPTS :=
+.PHONY: debuild
+debuild:
+	cd mlton ; debuild -S -d -sa -pgpg2 $(DEBUILD_OPTS)
