@@ -1,3 +1,10 @@
+mlton (20180207-0ppa2) xenial; urgency=low
+
+  * Add pr-252-x86-updates patch (derived from upstream pull request
+    252), which resolves `make check` errors on x86-linux
+
+ -- Matthew Fluet <Matthew.Fluet@gmail.com>  Mon, 19 Feb 2018 20:51:12 -0500
+
 mlton (20180207-0ppa1) xenial; urgency=low
 
   * New upstream release
