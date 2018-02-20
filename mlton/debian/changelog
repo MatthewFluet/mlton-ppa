@@ -1,4 +1,10 @@
-mlton (20180207-0ppa6) UBUNTU_SERIES_NAME; urgency=low
+mlton (20180207-0ppa7) UBUNTUSERIESNAME; urgency=low
+
+  * Bump version for Launchpad PPA rebuild
+
+ -- Matthew Fluet <Matthew.Fluet@gmail.com>  Tue, 20 Feb 2018 14:32:00 -0500
+
+mlton (20180207-0ppa6) UBUNTUSERIESNAME; urgency=low
 
   * Bump version to target different Ubuntu series
 

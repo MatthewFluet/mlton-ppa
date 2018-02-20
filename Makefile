@@ -22,13 +22,20 @@ DEBUILD_OPTS :=
 .PHONY: debuild
 debuild:
 	cp mlton/debian/changelog changelog.bak
+	cp mlton/debian/patches/series series.bak
 	cat changelog.bak | \
-		sed '1 s/UBUNTU_SERIES_NAME/$(UBUNTU_SERIES_NAME)/' | \
+		sed '1 s/UBUNTUSERIESNAME/$(UBUNTU_SERIES_NAME)/' | \
 		if [ -n "$(UBUNTU_SERIES_VERSION)" ]; then sed '1 s/)/~ubuntu$(UBUNTU_SERIES_VERSION))/'; else cat; fi \
 		> mlton/debian/changelog
+	if [ "$(UBUNTU_SERIES_NAME)" = "trusty" ]; then \
+		cat series.bak | \
+			grep -v "stack-hardening.patch" \
+			> mlton/debian/patches/series; \
+	fi
 	cd mlton ; debuild -S -d -sa -pgpg2 $(DEBUILD_OPTS)
 	cat changelog.bak > mlton/debian/changelog
-	rm changelog.bak
+	cat series.bak > mlton/debian/patches/series
+	rm changelog.bak series.bak
 
 .PHONY: debuild-all
 debuild-all:
