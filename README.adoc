@@ -1,0 +1,13 @@
+= https://launchpad.net/~matthew.fluet/+archive/ubuntu/mlton[mlton-ppa]
+Matthew Fluet <Matthew.Fluet@gmail.com>
+
+Debian packaging files for building/packaging http://mlton.org[MLton] via https://launchpad.net/ubuntu/+ppas[Ubuntu Launchpad PPA]
+
+== Installation Instructions
+
+[source,shell]
+----
+# sudo add-apt-repository ppa:matthew.fluet/mlton
+# sudo apt-get update
+# sudo apt-get install mlton
+----
